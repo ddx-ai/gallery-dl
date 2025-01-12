@@ -20,13 +20,22 @@ class DanbooruExtractor(BaseExtractor):
     page_limit = 1000
     page_start = None
     per_page = 200
-    useragent = util.USERAGENT
     request_interval = (0.5, 1.5)
 
     def _init(self):
+        self.session.headers["User-Agent"] = util.USERAGENT
         self.ugoira = self.config("ugoira", False)
         self.external = self.config("external", False)
-        self.includes = False
+
+        includes = self.config("metadata")
+        if includes:
+            if isinstance(includes, (list, tuple)):
+                includes = ",".join(includes)
+            elif not isinstance(includes, str):
+                includes = "artist_commentary,children,notes,parent,uploader"
+            self.includes = includes + ",id"
+        else:
+            self.includes = False
 
         threshold = self.config("threshold")
         if isinstance(threshold, int):
@@ -47,16 +56,6 @@ class DanbooruExtractor(BaseExtractor):
         return pages * self.per_page
 
     def items(self):
-        # 'includes' initialization must be done here and not in '_init()'
-        # or it'll cause an exception with e621 when 'metadata' is enabled
-        includes = self.config("metadata")
-        if includes:
-            if isinstance(includes, (list, tuple)):
-                includes = ",".join(includes)
-            elif not isinstance(includes, str):
-                includes = "artist_commentary,children,notes,parent,uploader"
-            self.includes = includes + ",id"
-
         data = self.metadata()
         for post in self.posts():
 
@@ -224,7 +223,7 @@ class DanbooruTagExtractor(DanbooruExtractor):
                 else:
                     prefix = None
             elif tag.startswith(
-                    ("id:", "md5:", "ordfav:", "ordfavgroup:", "ordpool:")):
+                    ("id:", "md5", "ordfav:", "ordfavgroup:", "ordpool:")):
                 prefix = None
                 break
 
