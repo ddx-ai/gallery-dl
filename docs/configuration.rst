@@ -401,6 +401,7 @@ Default
         ``urlgalleries``,
         ``vk``,
         ``weebcentral``,
+        ``xfolio``,
         ``zerochan``
     * ``"1.0-2.0"``
         ``flickr``,
@@ -1766,66 +1767,6 @@ Description
     to download images in JPEG format at their original resolution.
 
 
-extractor.cohost.asks
----------------------
-Type
-    ``bool``
-Default
-    ``true``
-Description
-    Extract ``ask`` posts.
-
-
-extractor.cohost.avatar
------------------------
-Type
-    ``bool``
-Default
-    ``false``
-Description
-    Download ``avatar`` images.
-
-
-extractor.cohost.background
----------------------------
-Type
-    ``bool``
-Default
-    ``false``
-Description
-    Download ``background``/``banner``/``header`` images.
-
-
-extractor.cohost.pinned
------------------------
-Type
-    ``bool``
-Default
-    ``false``
-Description
-    Extract pinned posts.
-
-
-extractor.cohost.replies
-------------------------
-Type
-    ``bool``
-Default
-    ``true``
-Description
-    Extract reply posts.
-
-
-extractor.cohost.shares
------------------------
-Type
-    ``bool``
-Default
-    ``false``
-Description
-    Extract shared posts.
-
-
 extractor.cyberdrop.domain
 --------------------------
 Type
@@ -3029,6 +2970,16 @@ Description
     * ``"asc"``: Ascending order (oldest first)
     * ``"desc"``: Descending order (newest first)
     * ``"reverse"``: Same as ``"asc"``
+
+
+extractor.khinsider.covers
+--------------------------
+Type
+    ``bool``
+Default
+    ``false``
+Description
+    Download album cover images.
 
 
 extractor.khinsider.format
