@@ -206,6 +206,12 @@ Consider all listed sites to potentially be NSFW.
     <td><a href="https://github.com/mikf/gallery-dl#oauth">OAuth</a></td>
 </tr>
 <tr>
+    <td>Discord</td>
+    <td>https://discord.com/</td>
+    <td>Channels, DMs, Servers</td>
+    <td></td>
+</tr>
+<tr>
     <td>Dynasty Reader</td>
     <td>https://dynasty-scans.com/</td>
     <td>Chapters, individual Images, Manga, Search Results</td>
@@ -284,6 +290,12 @@ Consider all listed sites to potentially be NSFW.
     <td><a href="https://github.com/mikf/gallery-dl#cookies">Cookies</a></td>
 </tr>
 <tr>
+    <td>Furry 34 com</td>
+    <td>https://furry34.com/</td>
+    <td>Playlists, Posts, Tag Searches</td>
+    <td></td>
+</tr>
+<tr>
     <td>Fuskator</td>
     <td>https://fuskator.com/</td>
     <td>Galleries, Search Results</td>
@@ -326,6 +338,12 @@ Consider all listed sites to potentially be NSFW.
     <td></td>
 </tr>
 <tr>
+    <td>HentaiEra</td>
+    <td>https://hentaiera.com/</td>
+    <td>Galleries, Search Results, Tag Searches</td>
+    <td></td>
+</tr>
+<tr>
     <td>HentaiFox</td>
     <td>https://hentaifox.com/</td>
     <td>Galleries, Search Results</td>
@@ -347,6 +365,12 @@ Consider all listed sites to potentially be NSFW.
     <td>HentaiNexus</td>
     <td>https://hentainexus.com/</td>
     <td>Galleries, Search Results</td>
+    <td></td>
+</tr>
+<tr>
+    <td>HentaiRox</td>
+    <td>https://hentairox.com/</td>
+    <td>Galleries, Search Results, Tag Searches</td>
     <td></td>
 </tr>
 <tr>
@@ -436,7 +460,13 @@ Consider all listed sites to potentially be NSFW.
 <tr>
     <td>imgur</td>
     <td>https://imgur.com/</td>
-    <td>Albums, Favorites, Favorites Folders, Galleries, individual Images, Search Results, Subreddits, Tag Searches, User Profiles</td>
+    <td>Albums, Favorites, Favorites Folders, Galleries, individual Images, Personal Posts, Search Results, Subreddits, Tag Searches, User Profiles</td>
+    <td></td>
+</tr>
+<tr>
+    <td>IMHentai</td>
+    <td>https://imhentai.xxx/</td>
+    <td>Galleries, Search Results, Tag Searches</td>
     <td></td>
 </tr>
 <tr>
@@ -1012,7 +1042,7 @@ Consider all listed sites to potentially be NSFW.
 <tr>
     <td>VSCO</td>
     <td>https://vsco.co/</td>
-    <td>Avatars, Collections, Galleries, individual Images, Spaces, User Profiles</td>
+    <td>Avatars, Collections, Galleries, individual Images, Spaces, User Profiles, Videos</td>
     <td></td>
 </tr>
 <tr>
@@ -1638,8 +1668,8 @@ Consider all listed sites to potentially be NSFW.
     <td></td>
 </tr>
 <tr>
-    <td>arch.b4k.co</td>
-    <td>https://arch.b4k.co/</td>
+    <td>arch.b4k.dev</td>
+    <td>https://arch.b4k.dev/</td>
     <td>Boards, Galleries, Search Results, Threads</td>
     <td></td>
 </tr>
