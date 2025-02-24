@@ -206,11 +206,13 @@ SUBCATEGORY_MAP = {
     },
     "bilibili": {
         "user-articles": "User Articles",
+        "user-articles-favorite": "User Article Favorites",
     },
     "bluesky": {
         "posts": "",
     },
     "boosty": {
+        "direct-messages": "DMs",
         "feed": "Subscriptions Feed",
     },
     "civitai": {
@@ -383,6 +385,7 @@ BASE_MAP = {
     "gelbooru_v01": "Gelbooru Beta 0.1.11",
     "gelbooru_v02": "Gelbooru Beta 0.2",
     "hentaicosplays": "Hentai Cosplay Instances",
+    "IMHentai"    : "IMHentai and Mirror Sites",
     "jschan"      : "jschan Imageboards",
     "lolisafe"    : "lolisafe and chibisafe",
     "lynxchan"    : "LynxChan Imageboards",
