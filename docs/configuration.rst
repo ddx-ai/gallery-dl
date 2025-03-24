@@ -2793,9 +2793,6 @@ Description
 
     Available formats are ``"webp"`` and ``"avif"``.
 
-    ``"original"`` will try to download the original ``jpg`` or ``png`` versions,
-    but is most likely going to fail with ``403 Forbidden`` errors.
-
 
 extractor.imagechest.access-token
 ---------------------------------
@@ -2995,6 +2992,19 @@ Description
     Download video files.
 
 
+extractor.kemonoparty.archives
+------------------------------
+Type
+    ``bool``
+Default
+    ``false``
+Description
+    Extract additional metadata for ``archives`` files, including
+    ``file``, ``file_list``, and ``password``.
+
+    Note: This requires 1 additional HTTP request per ``archives`` file.
+
+
 extractor.kemonoparty.comments
 ------------------------------
 Type
@@ -3079,9 +3089,9 @@ extractor.kemonoparty.metadata
 Type
     ``bool``
 Default
-    ``false``
+    ``true``
 Description
-    Extract ``username`` metadata.
+    Extract ``username`` and ``user_profile`` metadata.
 
 
 extractor.kemonoparty.revisions
