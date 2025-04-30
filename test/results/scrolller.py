@@ -11,21 +11,20 @@ __tests__ = (
 {
     "#url"    : "https://scrolller.com/r/AmateurPhotography",
     "#class"  : scrolller.ScrolllerSubredditExtractor,
-    "#pattern": r"https://\w+\.scrolller\.com/(\w+/)?[\w-]+-\w+\.(jpg|png)",
+    "#pattern": r"https://static\.scrolller\.com/\w+/(\w+/)?[\w-]+-\w+\.(jpg|png|webp)",
     "#range"  : "1-100",
     "#count"  : 100,
 
-    "albumUrl"        : None,
     "displayName"     : None,
     "fullLengthSource": None,
     "gfycatSource"    : None,
-    "hasAudio"        : None,
+    "hasAudio"        : bool,
     "height"          : int,
     "id"              : int,
     "isFavorite"      : False,
     "isNsfw"          : False,
     "isOptimized"     : bool,
-    "isPaid"          : None,
+    "isPaid"          : bool,
     "mediaSources"    : list,
     "ownerAvatar"     : None,
     "redditPath"      : r"re:/r/AmateurPhotography/comments/...",
@@ -36,7 +35,7 @@ __tests__ = (
     "tags"            : None,
     "title"           : str,
     "url"             : str,
-    "username"        : None,
+    "username"        : str,
     "width"           : int,
 },
 
@@ -74,12 +73,24 @@ __tests__ = (
 
 {
     "#url"    : "https://scrolller.com/long-comic-the-twelve-tasks-of-eve-12ch1ve8ko",
+    "#comment": "album post (#7339)",
     "#class"  : scrolller.ScrolllerPostExtractor,
     "#pattern": r"https://static\.scrolller\.com/\w+/long-comic-the-twelve-tasks-of-eve-\d+-\w+\.png",
     "#count"  : 177,
 
     "count": 177,
     "num"  : range(1, 177),
+},
+
+{
+    "#url"    : "https://scrolller.com/some-quick-news-tboi-rule-34-mod-czedll1bum",
+    "#comment": "album post with empty 'mediaSources' (#7428)",
+    "#class"  : scrolller.ScrolllerPostExtractor,
+    "#urls"   : "https://static.scrolller.com/gamma/some-quick-news-tboi-rule-34-mod-1-50uolks94u.png",
+    "#count"  : 1,
+
+    "count": 1,
+    "num"  : 1,
 },
 
 {
