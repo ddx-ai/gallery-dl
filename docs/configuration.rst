@@ -683,7 +683,7 @@ extractor.*.browser
 Type
     ``string``
 Default
-    * ``"firefox"``: ``artstation``, ``mangasee``, ``twitter``
+    * ``"firefox"``: ``artstation``, ``fanbox``, ``mangasee``, ``twitter``
     * ``null``: otherwise
 Example
     * ``"chrome:macos"``
@@ -3085,6 +3085,16 @@ Description
         Do not download videos
 
 
+extractor.instagram.stories.split
+---------------------------------
+Type
+    * ``bool``
+Default
+    ``false``
+Description
+    Split ``stories`` elements into separate posts.
+
+
 extractor.itaku.videos
 ----------------------
 Type
@@ -3850,6 +3860,16 @@ Type
     ``string``
 Description
     Your account's `API key <https://pixeldrain.com/user/api_keys>`__
+
+
+extractor.pixeldrain.recursive
+--------------------------
+Type
+    ``bool``
+Default
+    ``false``
+Description
+    Recursively download files from subfolders.
 
 
 extractor.pixiv.include
