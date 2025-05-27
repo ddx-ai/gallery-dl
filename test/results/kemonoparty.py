@@ -517,8 +517,13 @@ __tests__ = (
     "#class"   : kemonoparty.KemonopartyDiscordExtractor,
     "#count"   : 4,
 
-    "channel"     : "608504710906904576",
-    "channel_name": "finish-work",
+    "channel"      : "finish-work",
+    "channel_id"   : "608504710906904576",
+    "channel_nsfw" : False,
+    "channel_topic": None,
+    "channel_type" : 0,
+    "server"       : "ABFMMD NSFW Server",
+    "server_id"    : "488668827274444803",
 },
 
 {
@@ -527,18 +532,13 @@ __tests__ = (
     "#class"   : kemonoparty.KemonopartyDiscordExtractor,
     "#count"   : 4,
 
-    "channel"     : "608504710906904576",
-    "channel_name": "finish-work",
-},
-
-{
-    "#url"     : "https://kemono.su/discord/server/488668827274444803#finish-work",
-    "#category": ("", "kemonoparty", "discord"),
-    "#class"   : kemonoparty.KemonopartyDiscordExtractor,
-    "#count"   : 4,
-
-    "channel"     : "608504710906904576",
-    "channel_name": "finish-work",
+    "channel"      : "finish-work",
+    "channel_id"   : "608504710906904576",
+    "channel_nsfw" : False,
+    "channel_topic": None,
+    "channel_type" : 0,
+    "server"       : "ABFMMD NSFW Server",
+    "server_id"    : "488668827274444803",
 },
 
 {
@@ -547,21 +547,31 @@ __tests__ = (
     "#class"   : kemonoparty.KemonopartyDiscordExtractor,
     "#count"   : 4,
 
-    "channel"     : "608504710906904576",
-    "channel_name": "finish-work",
-    "date"        : "type:datetime",
+    "channel"      : "finish-work",
+    "channel_id"   : "608504710906904576",
+    "channel_nsfw" : False,
+    "channel_topic": None,
+    "channel_type" : 0,
+    "server"       : "ABFMMD NSFW Server",
+    "server_id"    : "488668827274444803",
+    "date"         : "type:datetime",
 },
 
 {
-    "#url"     : "https://kemono.su/discord/server/818188637329031199#818343747275456522",
+    "#url"     : "https://kemono.su/discord/server/818188637329031199/818343747275456522",
     "#comment" : "pagination",
     "#category": ("", "kemonoparty", "discord"),
     "#class"   : kemonoparty.KemonopartyDiscordExtractor,
     "#range"   : "1-250",
     "#count"   : 250,
 
-    "channel"     : "818343747275456522",
-    "channel_name": "wraith-sfw-gallery",
+    "channel"      : "wraith-sfw-gallery",
+    "channel_id"   : "818343747275456522",
+    "channel_nsfw" : False,
+    "channel_type" : 0,
+    "channel_topic": None,
+    "server"       : "The Ghost Zone",
+    "server_id"    : "818188637329031199",
 },
 
 {
@@ -571,7 +581,10 @@ __tests__ = (
     "#pattern" : r"https://kemono\.su/data/(e3/77/e377e3525164559484ace2e64425b0cec1db08.*\.png|51/45/51453640a5e0a4d23fbf57fb85390f9c5ec154.*\.gif)",
     "#count"   : ">= 2",
 
-    "hash": r"re:e377e3525164559484ace2e64425b0cec1db08|51453640a5e0a4d23fbf57fb85390f9c5ec154",
+    "hash": {
+        "51453640a5e0a4d23fbf57fb85390f9c5ec15459af0bb5ba65a83781056b68e2",
+        "e377e3525164559484ace2e64425b0cec1db0863b9398682b90a9af006d87758",
+    },
 },
 
 {
@@ -665,6 +678,52 @@ __tests__ = (
     "#url"     : "https://kemono.su/account/favorites/posts?sort_by=published&order=asc",
     "#category": ("", "kemonoparty", "favorite"),
     "#class"   : kemonoparty.KemonopartyFavoriteExtractor,
+},
+
+{
+    "#url"     : "https://kemono.su/artists?q=aMSa",
+    "#category": ("", "kemonoparty", "artists"),
+    "#class"   : kemonoparty.KemonopartyArtistsExtractor,
+    "#pattern" : kemonoparty.KemonopartyUserExtractor.pattern,
+    "#urls"    : (
+        "https://kemono.su/patreon/user/91205314",
+        "https://kemono.su/patreon/user/51528107",
+        "https://kemono.su/fanbox/user/12812028",
+        "https://kemono.su/patreon/user/35237747",
+        "https://kemono.su/patreon/user/8296916",
+        "https://kemono.su/patreon/user/155095324",
+        "https://kemono.su/patreon/user/75988930",
+        "https://kemono.su/patreon/user/93703989",
+        "https://kemono.su/patreon/user/100292687",
+        "https://kemono.su/patreon/user/138609443",
+        "https://kemono.su/patreon/user/61646879",
+        "https://kemono.su/patreon/user/110669843",
+        "https://kemono.su/patreon/user/44343773",
+        "https://kemono.su/patreon/user/77920059",
+        "https://kemono.su/patreon/user/102386631",
+    ),
+
+    "favorited": int,
+    "id"       : str,
+    "indexed"  : int,
+    "name"     : str,
+    "service"  : {"patreon", "fanbox"},
+    "updated"  : int,
+},
+
+{
+    "#url"     : "https://kemono.su/artists?q=Axe&service=discord&sort_by=name&order=asc",
+    "#category": ("", "kemonoparty", "artists"),
+    "#class"   : kemonoparty.KemonopartyArtistsExtractor,
+    "#pattern" : kemonoparty.KemonopartyDiscordServerExtractor.pattern,
+    "#urls"    : "https://kemono.su/discord/server/1168450323023663164",
+
+    "favorited": range(40, 80),
+    "id"       : "1168450323023663164",
+    "indexed"  : 1710201675,
+    "name"     : "Axel Colored Workshop",
+    "service"  : "discord",
+    "updated"  : range(1740000000, 2000000000),
 },
 
 )
