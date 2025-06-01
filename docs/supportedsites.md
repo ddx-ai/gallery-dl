@@ -178,7 +178,7 @@ Consider all listed sites to potentially be NSFW.
 <tr>
     <td>Civitai</td>
     <td>https://www.civitai.com/</td>
-    <td>individual Images, Image Listings, Models, Model Listings, Posts, Search Results, Tag Searches, User Profiles, User Images, User Models, User Posts, User Videos</td>
+    <td>individual Images, Image Listings, Models, Model Listings, Posts, Post Listings, Image Searches, Model Searches, Tag Searches, User Profiles, User Images, Image Reactions, User Models, User Posts, User Videos, Video Reactions</td>
     <td></td>
 </tr>
 <tr>
@@ -566,12 +566,6 @@ Consider all listed sites to potentially be NSFW.
     <td>Supported</td>
 </tr>
 <tr>
-    <td>MangaLife</td>
-    <td>https://manga4life.com/</td>
-    <td>Chapters, Manga</td>
-    <td></td>
-</tr>
-<tr>
     <td>MangaPark</td>
     <td>https://mangapark.net/</td>
     <td>Chapters, Manga</td>
@@ -580,12 +574,6 @@ Consider all listed sites to potentially be NSFW.
 <tr>
     <td>MangaRead</td>
     <td>https://mangaread.org/</td>
-    <td>Chapters, Manga</td>
-    <td></td>
-</tr>
-<tr>
-    <td>MangaSee</td>
-    <td>https://mangasee123.com/</td>
     <td>Chapters, Manga</td>
     <td></td>
 </tr>
@@ -836,7 +824,7 @@ Consider all listed sites to potentially be NSFW.
     <td></td>
 </tr>
 <tr>
-    <td>SchaleNetwork</td>
+    <td>Schale Network</td>
     <td>https://niyaniya.moe/</td>
     <td>Favorites, Galleries, Search Results</td>
     <td></td>
