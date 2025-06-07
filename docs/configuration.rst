@@ -726,7 +726,8 @@ Description
 extractor.*.headers
 -------------------
 Type
-    ``object`` (`name` -> `value`)
+    * ``"string"``
+    * ``object`` (`name` -> `value`)
 Default
     .. code:: json
 
@@ -744,18 +745,23 @@ Description
 
     To disable sending a header, set its value to ``null``.
 
+    Set this option to ``"firefox"`` or ``"chrome"``
+    to use these browser's default headers.
+
 
 extractor.*.ciphers
 -------------------
 Type
-    ``list`` of ``strings``
+    * ``string``
+    * ``list`` of ``strings``
 Example
-    .. code:: json
+    * ``"firefox"``
+    * .. code:: json
 
-      ["ECDHE-ECDSA-AES128-GCM-SHA256",
-       "ECDHE-RSA-AES128-GCM-SHA256",
-       "ECDHE-ECDSA-CHACHA20-POLY1305",
-       "ECDHE-RSA-CHACHA20-POLY1305"]
+        ["ECDHE-ECDSA-AES128-GCM-SHA256",
+         "ECDHE-RSA-AES128-GCM-SHA256",
+         "ECDHE-ECDSA-CHACHA20-POLY1305",
+         "ECDHE-RSA-CHACHA20-POLY1305"]
 
 Description
     List of TLS/SSL cipher suites in
@@ -763,13 +769,16 @@ Description
     to be passed to
     `ssl.SSLContext.set_ciphers() <https://docs.python.org/3/library/ssl.html#ssl.SSLContext.set_ciphers>`__
 
+    Set this option to ``"firefox"`` or ``"chrome"``
+    to use these browser's default ciphers.
+
 
 extractor.*.tls12
 -----------------
 Type
     ``bool``
 Default
-    * ``false``: ``artstation``
+    * ``false``: ``artstation``, ``behance``
     * ``true``: otherwise
 Description
     Allow selecting TLS 1.2 cipher suites.
@@ -2389,6 +2398,17 @@ Description
     You can follow `this guide <https://github.com/Tyrrrz/DiscordChatExporter/blob/master/.docs/Token-and-IDs.md#how-to-get-a-user-token>`__ to get a token.
 
 
+extractor.dynastyscans.anthology.metadata
+-----------------------------------------
+Type
+    ``bool``
+Default
+    ``false``
+Description
+    Extract ``alert``, ``description``, and ``status`` metadata
+    from an anthology's HTML page.
+
+
 extractor.[E621].metadata
 -------------------------
 Type
@@ -3489,6 +3509,29 @@ Description
     Your access token, necessary to fetch favorited notes.
 
 
+extractor.[misskey].include
+---------------------------
+Type
+    * ``string``
+    * ``list`` of ``strings``
+Default
+    ``"notes"``
+Example
+    * ``"avatar,background,notes"``
+    * ``["avatar", "background", "notes"]``
+Description
+    A (comma-separated) list of subcategories to include
+    when processing a user profile.
+
+    Possible values are
+    ``"info"``,
+    ``"avatar"``,
+    ``"background"``,
+    ``"notes"``,
+
+    It is possible to use ``"all"`` instead of listing all values separately.
+
+
 extractor.[misskey].renotes
 ---------------------------
 Type
@@ -4369,6 +4412,16 @@ Default
     ``true``
 Description
     Download videos.
+
+
+extractor.sexcom.gifs
+---------------------
+Type
+    ``bool``
+Default
+    ``true``
+Description
+    Download animated images as ``.gif`` instead of ``.webp``
 
 
 extractor.skeb.article
@@ -7487,6 +7540,33 @@ Description
 extractor.category-map
 ----------------------
 Type
+    * ``object`` (`category` -> `category`)
+    * ``string``
+Example
+    .. code:: json
+
+        {
+            "danbooru": "booru",
+            "gelbooru": "booru"
+        }
+Description
+    A JSON object mapping category names to their replacements.
+
+    Special values:
+
+    * ``"compat"``
+        .. code:: json
+
+            {
+                "coomer"       : "coomerparty",
+                "kemono"       : "kemonoparty",
+                "schalenetwork": "koharu"
+            }
+
+
+extractor.config-map
+--------------------
+Type
     ``object`` (`category` -> `category`)
 Default
     .. code:: json
@@ -7497,7 +7577,8 @@ Default
             "koharu"     : "schalenetwork"
         }
 Description
-    A JSON ``object`` mapping category names to their replacements.
+    Duplicate the configuration settings of extractor `categories`
+    to other names.
 
 
 globals

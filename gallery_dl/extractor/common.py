@@ -20,6 +20,7 @@ import logging
 import datetime
 import requests
 import threading
+from xml.etree import ElementTree
 from requests.adapters import HTTPAdapter
 from .message import Message
 from .. import config, output, text, util, cache, exception
@@ -53,6 +54,9 @@ class Extractor():
         self.url = match.string
         self.match = match
         self.groups = match.groups()
+
+        if self.category in CATEGORY_MAP:
+            self.category = CATEGORY_MAP[self.category]
         self._cfgpath = ("extractor", self.category, self.subcategory)
         self._parentdir = ""
 
@@ -249,6 +253,33 @@ class Extractor():
         kwargs.setdefault("allow_redirects", False)
         return self.request(url, **kwargs).headers.get("location", "")
 
+    def request_json(self, url, **kwargs):
+        try:
+            return util.json_loads(self.request(url, **kwargs).text)
+        except Exception as exc:
+            fatal = kwargs.get("fatal", True)
+            if not fatal or fatal is ...:
+                self.log.warning("%s: %s", exc.__class__.__name__, exc)
+                return {}
+            raise
+
+    def request_xml(self, url, xmlns=True, **kwargs):
+        text = self.request(url, **kwargs).text
+
+        if not xmlns:
+            text = text.replace(" xmlns=", " ns=")
+
+        parser = ElementTree.XMLParser()
+        try:
+            parser.feed(text)
+            return parser.close()
+        except Exception as exc:
+            fatal = kwargs.get("fatal", True)
+            if not fatal or fatal is ...:
+                self.log.warning("%s: %s", exc.__class__.__name__, exc)
+                return ElementTree.Element("")
+            raise
+
     _handle_429 = util.false
 
     def wait(self, seconds=None, until=None, adjust=1.0,
@@ -399,7 +430,10 @@ class Extractor():
             headers["User-Agent"] = useragent
             headers["Accept"] = "*/*"
             headers["Accept-Language"] = "en-US,en;q=0.5"
+
             ssl_ciphers = self.ciphers
+            if ssl_ciphers is not None and ssl_ciphers in SSL_CIPHERS:
+                ssl_ciphers = SSL_CIPHERS[ssl_ciphers]
 
         if BROTLI:
             headers["Accept-Encoding"] = "gzip, deflate, br"
@@ -417,12 +451,21 @@ class Extractor():
 
         custom_headers = self.config("headers")
         if custom_headers:
+            if isinstance(custom_headers, str):
+                if custom_headers in HTTP_HEADERS:
+                    custom_headers = HTTP_HEADERS[custom_headers]
+                else:
+                    self.log.error("Invalid 'headers' value '%s'",
+                                   custom_headers)
+                    custom_headers = ()
             headers.update(custom_headers)
 
         custom_ciphers = self.config("ciphers")
         if custom_ciphers:
             if isinstance(custom_ciphers, list):
                 ssl_ciphers = ":".join(custom_ciphers)
+            elif custom_ciphers in SSL_CIPHERS:
+                ssl_ciphers = SSL_CIPHERS[custom_ciphers]
             else:
                 ssl_ciphers = custom_ciphers
 
@@ -620,7 +663,7 @@ class Extractor():
         util.dump_json(obj, ensure_ascii=False, indent=2)
 
     def _dump_response(self, response, history=True):
-        """Write the response content to a .dump file in the current directory.
+        """Write the response content to a .txt file in the current directory.
 
         The file name is derived from the response url,
         replacing special characters with "_"
@@ -633,7 +676,8 @@ class Extractor():
             Extractor._dump_index += 1
         else:
             Extractor._dump_index = 1
-            Extractor._dump_sanitize = re.compile(r"[\\\\|/<>:\"?*&=#]+").sub
+            Extractor._dump_sanitize = util.re_compile(
+                r"[\\\\|/<>:\"?*&=#]+").sub
 
         fname = "{:>02}_{}".format(
             Extractor._dump_index,
@@ -964,7 +1008,7 @@ def _browser_useragent():
 
 _adapter_cache = {}
 _browser_cookies = {}
-
+CATEGORY_MAP = ()
 
 HTTP_HEADERS = {
     "firefox": (
